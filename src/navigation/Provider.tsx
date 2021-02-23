@@ -2,9 +2,7 @@ import React from 'react';
 import MainTab from '../screens/MainTab';
 
 const Providers = () => {
-  return (
-      <MainTab />
-  );
-}
+  return <MainTab />;
+};
 
 export default Providers;
