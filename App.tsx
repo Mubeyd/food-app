@@ -1,5 +1,6 @@
+import 'react-native-gesture-handler';
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 import Providers from './src/navigation/Provider';
 import { ApplicationProvider } from '@ui-kitten/components';
