@@ -24,7 +24,7 @@ const StarRating = (props) => {
     return (
         <View style={styles.container}>
             {stars}
-            <Text style={styles.text}>({props.reviews})</Text>
+            <Text style={styles.text}>{props.reviews}</Text>
         </View>
     );
 };
@@ -37,11 +37,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     star: {
-        color: '#FF8C00',
+        color: '#fbc02d',
     },
     text: {
         fontSize: 12,
         marginLeft: 5,
         color: '#444',
+        fontWeight: 'bold',
+
     },
 });

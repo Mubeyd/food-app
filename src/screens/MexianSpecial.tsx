@@ -15,6 +15,7 @@ import { useTheme } from '@react-navigation/native';
 import React, { useState } from 'react';
 import MenuCard from '../components/MenuCard';
 import { cardData } from '../model/cardData';
+import BuyCard from '../components/BuyCard';
 
 const { width, height1 } = Dimensions.get('window');
 const CARD_HEIGHT = 220;
@@ -32,16 +33,27 @@ const MexianSpecial = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <StatusBar backgroundColor="#FF6347" barStyle="light-content" />
-            <View style={styles.header}>
-                <Animatable.Image
-                    animation="fadeInDownBig"
-                    duraton="1500"
-                    source={require('../assets/logo.png')}
-                    style={styles.logo}
-                    resizeMode="stretch"
-                />
+            <View style={{ height: CARD_HEIGHT }}>
+                <View style={styles.header}>
+                    <Animatable.Image
+                        animation="fadeInDownBig"
+                        duraton="1500"
+                        source={require('../assets/logo.png')}
+                        style={styles.logo}
+                        resizeMode="stretch"
+                    />
+                </View>
             </View>
             <Animatable.View style={[styles.footer]} animation="fadeInUpBig">
+                <View style={{ alignSelf: 'center' }}>
+                    <View style={styles.buyCard}>
+                        <BuyCard />
+                    </View>
+                    <Text style={{ color: '#000', alignSelf: 'center' }}>
+                        {' '}
+                        ---- Related Foods ----
+                    </Text>
+                </View>
                 <Animated.ScrollView
                     // ref={_scrollView}
                     horizontal
@@ -76,7 +88,7 @@ const MexianSpecial = ({ navigation }) => {
                         { useNativeDriver: true },
                     )}>
                     {state.map((marker, index) => (
-                        <View style={styles.card} key={index}>
+                        <View style={styles.menuCard} key={index}>
                             <MenuCard
                                 name={marker.title}
                                 logo={marker.logo}
@@ -107,7 +119,7 @@ const height_logo = height * 0.28;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#FF6347',
+        backgroundColor: '#f44336',
     },
     header: {
         flex: 2,
@@ -121,8 +133,9 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 30,
         paddingVertical: 50,
         paddingHorizontal: 30,
-        height: 800,
+        // height: 2800,
         opacity: 0.5,
+        marginTop: 12,
     },
     logo: {
         width: height_logo,
@@ -160,18 +173,31 @@ const styles = StyleSheet.create({
         right: 0,
         paddingVertical: 10,
     },
-    card: {
+    buyCard: {
         // padding: 10,
         elevation: 2,
         backgroundColor: '#FFF',
-        borderTopLeftRadius: 5,
-        borderTopRightRadius: 5,
+        borderRadius: 5,
         marginHorizontal: 10,
         shadowColor: '#000',
         shadowRadius: 5,
         shadowOpacity: 0.3,
         shadowOffset: { x: 2, y: -2 },
-        height: CARD_HEIGHT,
+        height: CARD_HEIGHT - 40,
+        width: CARD_WIDTH - 60,
+        overflow: 'hidden',
+    },
+    menuCard: {
+        // padding: 10,
+        elevation: 2,
+        backgroundColor: '#FFF',
+        borderRadius: 5,
+        marginHorizontal: 10,
+        shadowColor: '#000',
+        shadowRadius: 5,
+        shadowOpacity: 0.3,
+        shadowOffset: { x: 2, y: -2 },
+        height: CARD_HEIGHT - 20,
         width: CARD_WIDTH,
         overflow: 'hidden',
     },
