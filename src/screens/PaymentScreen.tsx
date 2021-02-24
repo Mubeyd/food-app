@@ -1,9 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import BookingStages from '../components/BookingStages';
 
 const PaymentScreen = ({ navigation }) => {
     return (
         <View>
+            <BookingStages orderState="delivery" />
             <Text style={styles.headerText}>PaymentScreen</Text>
             <TouchableOpacity
                 onPress={() => navigation.navigate('ConfirmDoneScreen')}

@@ -1,14 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import BookingStages from '../components/BookingStages';
 
 const SelectScreen = ({ navigation }) => {
     return (
         <View>
+            <BookingStages orderState="select" />
             <Text style={styles.headerText}>SelectScreen</Text>
             <TouchableOpacity
                 onPress={() => navigation.navigate('AddressScreen')}
                 style={styles.button}>
-                <Text style={styles.buttonText}>Select Menu</Text>
+                <Text style={styles.buttonText}>Confirm Delivery</Text>
             </TouchableOpacity>
         </View>
     );
@@ -26,8 +28,8 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         padding: 5,
         borderRadius: 14,
-        height: 32,
-        width: 100,
+        height: 64,
+        width: 160,
     },
     buttonText: {
         color: '#fff',

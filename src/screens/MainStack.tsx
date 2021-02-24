@@ -100,6 +100,14 @@ const MainStack = (navigation: any) => {
             headerBackTitleVisible: false,
             // headerTransparent: true,
             headerTintColor: '#000',
+            headerStyle: {
+              backgroundColor: '#fff',
+              elevation: 0,
+            },
+            headerTitleStyle: {
+              color: '#000',
+              alignSelf: 'center',
+            },
           }}
         />
         <HomeStack.Screen
@@ -110,6 +118,14 @@ const MainStack = (navigation: any) => {
             headerBackTitleVisible: false,
             // headerTransparent: true,
             headerTintColor: '#000',
+            headerStyle: {
+              backgroundColor: '#fff',
+              elevation: 0,
+            },
+            headerTitleStyle: {
+              color: '#000',
+              alignSelf: 'center',
+            },
           }}
         />
         <HomeStack.Screen
@@ -120,6 +136,14 @@ const MainStack = (navigation: any) => {
             headerBackTitleVisible: false,
             // headerTransparent: true,
             headerTintColor: '#000',
+            headerStyle: {
+              backgroundColor: '#fff',
+              elevation: 0,
+            },
+            headerTitleStyle: {
+              color: '#000',
+              alignSelf: 'center',
+            },
           }}
         />
         <HomeStack.Screen
@@ -129,8 +153,17 @@ const MainStack = (navigation: any) => {
             title: 'ConfirmDoneScreen',
             headerBackTitleVisible: false,
             headerTintColor: '#000',
-            // headerTitle: true,
+            // headerTitle: false,
+            headerStyle: {
+              backgroundColor: '#fff',
+              elevation: 0,
+            },
+            headerTitleStyle: {
+              color: '#000',
+              alignSelf: 'center',
+            },
             // headerTransparent: true,
+            headerLeft: null,
           }}
         />
       </HomeStack.Navigator>
