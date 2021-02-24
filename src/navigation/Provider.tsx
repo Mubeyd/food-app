@@ -1,8 +1,8 @@
 import React from 'react';
-import MainTab from '../screens/MainTab';
+import MainStack from '../screens/MainStack';
 
 const Providers = () => {
-    return <MainTab />;
+    return <MainStack />;
 };
 
 export default Providers;

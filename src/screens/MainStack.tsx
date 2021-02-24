@@ -4,21 +4,25 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useTheme, Avatar } from 'react-native-paper';
 import CardListScreen from './CardListScreen';
 import CardItemDetails from './CardItemDetails';
 import HomeScreen from './HomeScreen';
-import MexianSpecial from './MexianSpecial';
+import MenuInfo from './MenuInfo';
+import BookingStack from './BookingStack';
+import SelectScreen from './SelectScreen';
+import AddressScreen from './AddressScreen';
+import PaymentScreen from './PaymentScreen';
+import ConfirmDoneScreen from './ConfirmDoneScreen';
 
 const HomeStack = createStackNavigator();
 
-const MainTab = (navigation: any) => {
+const MainStack = (navigation: any) => {
   const { colors } = useTheme();
   return (
     <NavigationContainer>
       <HomeStack.Navigator
-        initialRouteName="MexianSpecial"
+        initialRouteName="MenuInfo"
         screenOptions={{
           headerStyle: {
             backgroundColor: colors.background,
@@ -34,7 +38,7 @@ const MainTab = (navigation: any) => {
           },
         }}>
         <HomeStack.Screen
-          name="Home"
+          name="HomeScreen"
           component={HomeScreen}
           options={{
             title: 'FoodFinder',
@@ -70,14 +74,64 @@ const MainTab = (navigation: any) => {
             headerTintColor: '#fff',
           })}
         />
-        <HomeStack.Screen
-          name="MexianSpecial"
-          component={MexianSpecial}
+        {/* <HomeStack.Screen
+          name="BookingStack"
+          component={BookingStack}
           options={({ route }) => ({
-            // title: route.params.title,
+            title: 'info',
+            headerBackTitleVisible: true,
+            // headerTransparent: true,
+          })}
+        /> */}
+        <HomeStack.Screen
+          name="MenuInfo"
+          component={MenuInfo}
+          options={{
+            title: 'MenuInfo',
             headerBackTitleVisible: false,
             headerTransparent: true,
-          })}
+          }}
+        />
+        <HomeStack.Screen
+          name="SelectScreen"
+          component={SelectScreen}
+          options={{
+            title: 'SelectScreen',
+            headerBackTitleVisible: false,
+            // headerTransparent: true,
+            headerTintColor: '#000',
+          }}
+        />
+        <HomeStack.Screen
+          name="AddressScreen"
+          component={AddressScreen}
+          options={{
+            title: 'AddressScreen',
+            headerBackTitleVisible: false,
+            // headerTransparent: true,
+            headerTintColor: '#000',
+          }}
+        />
+        <HomeStack.Screen
+          name="PaymentScreen"
+          component={PaymentScreen}
+          options={{
+            title: 'PaymentScreen',
+            headerBackTitleVisible: false,
+            // headerTransparent: true,
+            headerTintColor: '#000',
+          }}
+        />
+        <HomeStack.Screen
+          name="ConfirmDoneScreen"
+          component={ConfirmDoneScreen}
+          options={{
+            title: 'ConfirmDoneScreen',
+            headerBackTitleVisible: false,
+            headerTintColor: '#000',
+            // headerTitle: true,
+            // headerTransparent: true,
+          }}
         />
       </HomeStack.Navigator>
     </NavigationContainer>
@@ -90,4 +144,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-export default MainTab;
+export default MainStack;

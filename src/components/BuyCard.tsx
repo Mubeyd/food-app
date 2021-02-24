@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import StarRating from './StarRating';
 
-const BuyCard = () => {
+const BuyCard = (props) => {
     return (
         <View style={styles.conatiner}>
             <Text style={styles.menuText}> Pure Red Juice</Text>
@@ -11,7 +11,7 @@ const BuyCard = () => {
             </View>
             <Text style={styles.priceText}> $ 10.00</Text>
             <Text style={styles.detailsText}> Free Delivery within 35 Min</Text>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity onPress={props.onPress} style={styles.button}>
                 <Text style={styles.buttonText}>Buy</Text>
             </TouchableOpacity>
         </View>
@@ -23,7 +23,7 @@ export default BuyCard;
 const styles = StyleSheet.create({
     conatiner: {
         backgroundColor: '#fff',
-        height: 180,
+        height: 220,
         elevation: 3,
         width: '100%',
         alignSelf: 'center',
@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
         color: '#000',
         fontWeight: 'bold',
         alignSelf: 'center',
+        fontSize: 20,
     },
     starRating: {
         color: '#fff',
@@ -46,19 +47,20 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
     },
     detailsText: {
-        color: '#000',
+        color: '#757575',
         alignSelf: 'center',
+        fontWeight: 'bold',
     },
     button: {
         backgroundColor: '#f44336',
         alignSelf: 'center',
         padding: 5,
-        borderRadius: 6,
+        borderRadius: 14,
         height: 32,
-        width: 77,
+        width: 100,
     },
     buttonText: {
-        color: '#000',
+        color: '#fff',
         fontWeight: 'bold',
         alignSelf: 'center',
     },

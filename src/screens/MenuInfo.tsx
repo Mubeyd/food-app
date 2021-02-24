@@ -8,6 +8,7 @@ import {
     Animated,
     Image,
     Platform,
+    ImageBackground,
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -22,7 +23,7 @@ const CARD_HEIGHT = 220;
 const CARD_WIDTH = width * 0.8;
 const SPACING_FOR_CARD_INSET = width * 0.1 - 10;
 
-const MexianSpecial = ({ navigation }) => {
+const MenuInfo = ({ navigation }) => {
     const { colors } = useTheme();
 
     const bs = React.useRef(null);
@@ -32,25 +33,33 @@ const MexianSpecial = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <StatusBar backgroundColor="#FF6347" barStyle="light-content" />
-            <View style={{ height: CARD_HEIGHT }}>
-                <View style={styles.header}>
-                    <Animatable.Image
-                        animation="fadeInDownBig"
-                        duraton="1500"
+            <StatusBar backgroundColor="#f44336" barStyle="light-content" />
+            <View style={{ height: CARD_HEIGHT - 90 }}>
+                <Animatable.View
+                    animation="fadeInDownBig"
+                    duraton="1500"
+                    style={styles.header}>
+                    <ImageBackground
+                        // animation="fadeInDownBig"
+                        // duraton="1500"
                         source={require('../assets/logo.png')}
                         style={styles.logo}
-                        resizeMode="stretch"
-                    />
-                </View>
+                        resizeMode="stretch">
+                        <Text style={styles.menuDetailsText}>
+                            Boritos with minced Meat Filling
+                        </Text>
+                        <Text style={styles.menuTypeText}>Mexian Special</Text>
+                    </ImageBackground>
+                </Animatable.View>
             </View>
             <Animatable.View style={[styles.footer]} animation="fadeInUpBig">
-                <View style={{ alignSelf: 'center' }}>
+                <View>
                     <View style={styles.buyCard}>
-                        <BuyCard />
+                        <BuyCard
+                            onPress={() => navigation.navigate('SelectScreen')}
+                        />
                     </View>
-                    <Text style={{ color: '#000', alignSelf: 'center' }}>
-                        {' '}
+                    <Text style={styles.saparatorText}>
                         ---- Related Foods ----
                     </Text>
                 </View>
@@ -111,7 +120,7 @@ const MexianSpecial = ({ navigation }) => {
         </View>
     );
 };
-export default MexianSpecial;
+export default MenuInfo;
 
 const { height } = Dimensions.get('screen');
 const height_logo = height * 0.28;
@@ -119,21 +128,41 @@ const height_logo = height * 0.28;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#f44336',
+        backgroundColor: '#eeeeee',
     },
     header: {
         flex: 2,
         justifyContent: 'center',
         alignItems: 'center',
+        borderBottomLeftRadius: 40,
+        borderBottomRightRadius: 40,
+        backgroundColor: '#f44336',
+        marginBottom: -140,
+    },
+    menuDetailsText: {
+        color: '#fff',
+        alignSelf: 'center',
+        fontSize: 14,
+        marginVertical: 24,
+    },
+    menuTypeText: {
+        color: '#fff',
+        alignSelf: 'center',
+        fontSize: 28,
+        fontWeight: 'bold',
+    },
+    saparatorText: {
+        margin: 36,
+        color: '#757575',
+        alignSelf: 'center',
+        fontWeight: 'bold',
     },
     footer: {
         flex: 1,
-        backgroundColor: '#009387',
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
         paddingVertical: 50,
         paddingHorizontal: 30,
-        // height: 2800,
         opacity: 0.5,
         marginTop: 12,
     },
@@ -141,62 +170,39 @@ const styles = StyleSheet.create({
         width: height_logo,
         height: height_logo,
     },
-    title: {
-        color: '#05375a',
-        fontSize: 12,
-        fontWeight: 'bold',
-    },
-    text: {
-        color: 'grey',
-        marginTop: 5,
-    },
-    button: {
-        alignItems: 'flex-end',
-        marginTop: 30,
-    },
-    signIn: {
-        width: 150,
-        height: 40,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 50,
-        flexDirection: 'row',
-    },
-    textSign: {
-        color: 'white',
-        fontWeight: 'bold',
-    },
     scrollView: {
         position: 'absolute',
         bottom: 0,
         left: 0,
         right: 0,
-        paddingVertical: 10,
+        // paddingVertical: 10,
     },
     buyCard: {
         // padding: 10,
-        elevation: 2,
+        elevation: 22,
         backgroundColor: '#FFF',
         borderRadius: 5,
         marginHorizontal: 10,
         shadowColor: '#000',
         shadowRadius: 5,
         shadowOpacity: 0.3,
-        shadowOffset: { x: 2, y: -2 },
-        height: CARD_HEIGHT - 40,
-        width: CARD_WIDTH - 60,
+        shadowOffset: { width: 2, height: -2 },
+        height: CARD_HEIGHT,
+        width: CARD_WIDTH - 20,
         overflow: 'hidden',
+        alignSelf: 'center',
     },
     menuCard: {
         // padding: 10,
-        elevation: 2,
+        elevation: 12,
         backgroundColor: '#FFF',
         borderRadius: 5,
         marginHorizontal: 10,
+        marginBottom: 10,
         shadowColor: '#000',
         shadowRadius: 5,
         shadowOpacity: 0.3,
-        shadowOffset: { x: 2, y: -2 },
+        shadowOffset: { width: 4, height: -4 },
         height: CARD_HEIGHT - 20,
         width: CARD_WIDTH,
         overflow: 'hidden',

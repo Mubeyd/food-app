@@ -91,7 +91,7 @@ const HomeScreen = ({ navigation }) => {
                 <TouchableOpacity
                     style={styles.categoryBtn}
                     onPress={() => {
-                        navigation.navigate('MexianSpecial', {
+                        navigation.navigate('MenuInfo', {
                             title: 'info',
                         });
                     }}>

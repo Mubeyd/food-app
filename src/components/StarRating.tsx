@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
     },
     star: {
         color: '#fbc02d',
+        // backgroundColor: '#000',
     },
     text: {
         fontSize: 12,
