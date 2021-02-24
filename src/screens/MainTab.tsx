@@ -18,7 +18,7 @@ const MainTab = (navigation: any) => {
   return (
     <NavigationContainer>
       <HomeStack.Navigator
-        initialRouteName="Home"
+        initialRouteName="MexianSpecial"
         screenOptions={{
           headerStyle: {
             backgroundColor: colors.background,
@@ -30,7 +30,7 @@ const MainTab = (navigation: any) => {
             fontWeight: 'bold',
             marginRight: 30,
             alignSelf: 'center',
-            color: '#fff'
+            color: '#fff',
           },
         }}>
         <HomeStack.Screen
@@ -74,7 +74,7 @@ const MainTab = (navigation: any) => {
           name="MexianSpecial"
           component={MexianSpecial}
           options={({ route }) => ({
-            title: route.params.title,
+            // title: route.params.title,
             headerBackTitleVisible: false,
             headerTransparent: true,
           })}

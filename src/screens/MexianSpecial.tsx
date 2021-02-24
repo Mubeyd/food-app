@@ -5,15 +5,29 @@ import {
     Dimensions,
     StyleSheet,
     StatusBar,
+    Animated,
     Image,
+    Platform,
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { useTheme } from '@react-navigation/native';
 import React, { useState } from 'react';
+import MenuCard from '../components/MenuCard';
+import { cardData } from '../model/cardData';
+
+const { width, height1 } = Dimensions.get('window');
+const CARD_HEIGHT = 220;
+const CARD_WIDTH = width * 0.8;
+const SPACING_FOR_CARD_INSET = width * 0.1 - 10;
 
 const MexianSpecial = ({ navigation }) => {
     const { colors } = useTheme();
+
+    const bs = React.useRef(null);
+
+    const [state, setState] = useState(cardData);
+    let mapAnimation = new Animated.Value(0);
 
     return (
         <View style={styles.container}>
@@ -27,46 +41,60 @@ const MexianSpecial = ({ navigation }) => {
                     resizeMode="stretch"
                 />
             </View>
-            <Animatable.View
-                style={[
-                    styles.footer,
-                    // {
-                    //     backgroundColor: '#009387',
-                    // },
-                ]}
-                animation="fadeInUpBig">
-                <Text
-                    style={[
-                        styles.title,
-                        {
-                            color: colors.text,
-                        },
-                    ]}>
-                    Find best food in your locality!
-                </Text>
-                <Text
-                    style={[
-                        styles.title,
-                        {
-                            color: colors.text,
-                        },
-                    ]}>
-                    Find best food in your locality!
-                </Text>
-                <Text style={styles.text}>Sign in with account</Text>
-                <View style={styles.button}>
-                    <TouchableOpacity
-                        onPress={() => {}}>
-                        <View style={styles.signIn}>
-                            <Text style={styles.textSign}>Get Started</Text>
-                            <MaterialIcons
-                                name="navigate-next"
-                                color="#fff"
-                                size={20}
+            <Animatable.View style={[styles.footer]} animation="fadeInUpBig">
+                <Animated.ScrollView
+                    // ref={_scrollView}
+                    horizontal
+                    pagingEnabled
+                    scrollEventThrottle={1}
+                    showsHorizontalScrollIndicator={false}
+                    snapToInterval={CARD_WIDTH + 20}
+                    snapToAlignment="center"
+                    style={styles.scrollView}
+                    contentInset={{
+                        top: 0,
+                        left: SPACING_FOR_CARD_INSET,
+                        bottom: 0,
+                        right: SPACING_FOR_CARD_INSET,
+                    }}
+                    contentContainerStyle={{
+                        paddingHorizontal:
+                            Platform.OS === 'android'
+                                ? SPACING_FOR_CARD_INSET
+                                : 0,
+                    }}
+                    onScroll={Animated.event(
+                        [
+                            {
+                                nativeEvent: {
+                                    contentOffset: {
+                                        x: mapAnimation,
+                                    },
+                                },
+                            },
+                        ],
+                        { useNativeDriver: true },
+                    )}>
+                    {state.map((marker, index) => (
+                        <View style={styles.card} key={index}>
+                            <MenuCard
+                                name={marker.title}
+                                logo={marker.logo}
+                                ratings={marker.rating}
+                                reviews={marker.reviews}
+                                price={marker.price}
+                                description1={marker.description1}
+                                description2={marker.description2}
+                                // orderState={marker.orderState}
+                                imageSource={marker.image}
+                                onPress={() => {
+                                    // bs.current.snapTo(0);
+                                    console.log('MapCard', index);
+                                }}
                             />
                         </View>
-                    </TouchableOpacity>
-                </View>
+                    ))}
+                </Animated.ScrollView>
             </Animatable.View>
         </View>
     );
@@ -102,7 +130,7 @@ const styles = StyleSheet.create({
     },
     title: {
         color: '#05375a',
-        fontSize: 30,
+        fontSize: 12,
         fontWeight: 'bold',
     },
     text: {
@@ -124,5 +152,27 @@ const styles = StyleSheet.create({
     textSign: {
         color: 'white',
         fontWeight: 'bold',
+    },
+    scrollView: {
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        paddingVertical: 10,
+    },
+    card: {
+        // padding: 10,
+        elevation: 2,
+        backgroundColor: '#FFF',
+        borderTopLeftRadius: 5,
+        borderTopRightRadius: 5,
+        marginHorizontal: 10,
+        shadowColor: '#000',
+        shadowRadius: 5,
+        shadowOpacity: 0.3,
+        shadowOffset: { x: 2, y: -2 },
+        height: CARD_HEIGHT,
+        width: CARD_WIDTH,
+        overflow: 'hidden',
     },
 });

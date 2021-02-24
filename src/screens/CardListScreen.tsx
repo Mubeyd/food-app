@@ -7,7 +7,7 @@ import {
     StyleSheet,
     ScrollView,
 } from 'react-native';
-import { data } from '../model/data';
+import { cardData } from '../model/cardData';
 import Card from '../components/Card';
 
 interface Item {
@@ -21,7 +21,7 @@ interface Item {
     categories: [];
 }
 const CardListScreen = ({ navigation }) => {
-    const [state, setState] = useState(data);
+    const [state, setState] = useState(cardData);
 
     const renderItem = (item) => {
         return (
