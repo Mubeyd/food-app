@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import * as Animatable from 'react-native-animatable';
 import BookingStages from '../components/BookingStages';
 import CreditDetails from '../components/CreditDetails';
 import PaymentButton from '../components/PaymentButton';
@@ -19,28 +20,32 @@ const PaymentScreen = ({ navigation }) => {
                 <Text style={styles.headerPrice}>$ 10</Text>
             </View>
             <View style={styles.buttonsView}>
-                <PaymentButton
-                    antIcon="idcard"
-                    payType="Touch ID"
-                    payDetails="Using Apple ID"
-                    onPress={() => {
-                        setstate(() => !state);
-                        setstate2(() => !state2);
-                        setshowDetails(() => !showDetails);
-                    }}
-                    selected={state ?? state2}
-                />
-                <PaymentButton
-                    antIcon="creditcard"
-                    payType="Credit Card"
-                    payDetails="Master or Debit"
-                    onPress={() => {
-                        setstate(() => !state);
-                        setstate2(() => !state2);
-                        setshowDetails2(() => !showDetails2);
-                    }}
-                    selected={state2 ?? state}
-                />
+                <Animatable.View animation="slideInRight" duration={1200}>
+                    <PaymentButton
+                        antIcon="idcard"
+                        payType="Touch ID"
+                        payDetails="Using Apple ID"
+                        onPress={() => {
+                            setstate(() => !state);
+                            setstate2(() => !state2);
+                            setshowDetails(() => !showDetails);
+                        }}
+                        selected={state ?? state2}
+                    />
+                </Animatable.View>
+                <Animatable.View animation="slideInRight" duration={1200}>
+                    <PaymentButton
+                        antIcon="creditcard"
+                        payType="Credit Card"
+                        payDetails="Master or Debit"
+                        onPress={() => {
+                            setstate(() => !state);
+                            setstate2(() => !state2);
+                            setshowDetails2(() => !showDetails2);
+                        }}
+                        selected={state2 ?? state}
+                    />
+                </Animatable.View>
             </View>
             <View>
                 {showDetails ? (

@@ -37,7 +37,7 @@ const MenuInfo = ({ navigation }) => {
             <View style={{ height: CARD_HEIGHT - 90 }}>
                 <Animatable.View
                     animation="fadeInDownBig"
-                    duraton="1500"
+                    duration={1000}
                     style={styles.header}>
                     <ImageBackground
                         // animation="fadeInDownBig"
@@ -134,8 +134,8 @@ const styles = StyleSheet.create({
         flex: 2,
         justifyContent: 'center',
         alignItems: 'center',
-        borderBottomLeftRadius: 40,
-        borderBottomRightRadius: 40,
+        borderBottomLeftRadius: 60,
+        borderBottomRightRadius: 60,
         backgroundColor: '#f44336',
         marginBottom: -140,
     },

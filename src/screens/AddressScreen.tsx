@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import * as Animatable from 'react-native-animatable';
 import AddressSelect from '../components/AddressSelect';
 import BookingStages from '../components/BookingStages';
 
@@ -11,24 +12,28 @@ const AddressScreen = ({ navigation }) => {
         <View style={styles.container}>
             <BookingStages orderState="address" />
             <View style={styles.addresses}>
-                <AddressSelect
-                    onPress={() => {
-                        setstate(() => !state);
-                        setstate2(() => !state2);
-                    }}
-                    selected={state ?? state2}
-                    AddType="Home"
-                    AddDetails="367 Harris somewhere "
-                />
-                <AddressSelect
-                    onPress={() => {
-                        setstate(() => !state);
-                        setstate2(() => !state2);
-                    }}
-                    selected={state2 ?? state}
-                    AddType="Work"
-                    AddDetails="494 Betra Sqaures "
-                />
+                <Animatable.View animation="slideInRight" duration={1200}>
+                    <AddressSelect
+                        onPress={() => {
+                            setstate(() => !state);
+                            setstate2(() => !state2);
+                        }}
+                        selected={state ?? state2}
+                        AddType="Home"
+                        AddDetails="367 Harris somewhere "
+                    />
+                </Animatable.View>
+                <Animatable.View animation="slideInRight" duration={1400}>
+                    <AddressSelect
+                        onPress={() => {
+                            setstate(() => !state);
+                            setstate2(() => !state2);
+                        }}
+                        selected={state2 ?? state}
+                        AddType="Work"
+                        AddDetails="494 Betra Sqaures "
+                    />
+                </Animatable.View>
             </View>
             <TouchableOpacity
                 onPress={() => navigation.navigate('PaymentScreen')}

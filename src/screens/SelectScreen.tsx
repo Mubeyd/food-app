@@ -23,8 +23,8 @@ const SelectScreen = ({ navigation }) => {
             <BookingStages orderState="select" />
             {/* <Text style={styles.headerText}>SelectScreen</Text> */}
             <Animatable.View
-                animation="rubberBand"
-                duraton="1500"
+                animation="flipInX"
+                duration={1000}
                 style={styles.mainView}>
                 <ImageBackground
                     source={require('../assets/menuBack.jpeg')}
