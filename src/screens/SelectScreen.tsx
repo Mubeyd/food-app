@@ -7,6 +7,9 @@ const SelectScreen = ({ navigation }) => {
         <View>
             <BookingStages orderState="select" />
             <Text style={styles.headerText}>SelectScreen</Text>
+            <View>
+                <Text>Strawberry</Text>
+            </View>
             <TouchableOpacity
                 onPress={() => navigation.navigate('AddressScreen')}
                 style={styles.button}>

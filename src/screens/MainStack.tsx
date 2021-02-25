@@ -22,7 +22,7 @@ const MainStack = (navigation: any) => {
   return (
     <NavigationContainer>
       <HomeStack.Navigator
-        initialRouteName="MenuInfo"
+        initialRouteName="SelectScreen"
         screenOptions={{
           headerStyle: {
             backgroundColor: colors.background,
