@@ -190,6 +190,8 @@ dependencies {
 
     implementation project(':react-native-safe-area-context')
 
+    implementation project(':lottie-react-native')
+
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
