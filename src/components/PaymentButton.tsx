@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import CreditDetails from './CreditDetails';
 
 interface Props {
     payType: 'Touch ID' | 'Credit Card';
@@ -39,7 +38,6 @@ const PaymentButton = (props: Props) => {
                     </Text>
                 </View>
             </TouchableOpacity>
-            {/* <CreditDetails /> */}
         </View>
     );
 };

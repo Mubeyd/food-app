@@ -7,8 +7,8 @@ import PaymentButton from '../components/PaymentButton';
 const PaymentScreen = ({ navigation }) => {
     const [state, setstate] = useState(false);
     const [state2, setstate2] = useState(true);
-    const [showDetails, setshowDetails] = useState(true);
-    const [showDetails2, setshowDetails2] = useState(true);
+    const [showDetails, setshowDetails] = useState(false);
+    const [showDetails2, setshowDetails2] = useState(false);
     return (
         <View>
             <BookingStages orderState="delivery" />
