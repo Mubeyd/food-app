@@ -33,7 +33,7 @@ const BookingStages = (props: Props) => {
                 <View style={[styles.circleView, { backgroundColor: color3 }]}>
                     <Text style={styles.circleNumber}>3</Text>
                 </View>
-                <Text style={[styles.text1, { color: color3 }]}>Delivery</Text>
+                <Text style={[styles.text1, { color: color3 }]}> Delivery</Text>
             </View>
         </View>
     );

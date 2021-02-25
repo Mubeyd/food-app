@@ -1,6 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import {
     grey500,
     grey700,
@@ -14,6 +13,8 @@ const CARD_WIDTH = windowWidth * 0.9;
 interface Props {
     AddType: 'Home' | 'Work' | 'School';
     AddDetails: string;
+    onPress: () => void;
+    selected: Boolean;
 }
 
 const AddressSelect = (props: Props) => {
@@ -24,8 +25,19 @@ const AddressSelect = (props: Props) => {
                 <Text style={styles.addressText}>{props.AddDetails}</Text>
             </View>
             <View style={styles.rightView}>
-                <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}>Select</Text>
+                <TouchableOpacity
+                    style={props.selected ? styles.onbutton : styles.button}
+                    onPress={props.onPress}
+                // disabled={props.selected}
+                >
+                    <Text
+                        style={
+                            props.selected
+                                ? styles.onbuttonText
+                                : styles.buttonText
+                        }>
+                        Select
+                    </Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -81,5 +93,20 @@ const styles = StyleSheet.create({
     buttonText: {
         fontWeight: 'bold',
         color: '#000',
+    },
+    onbutton: {
+        width: 100,
+        height: 36,
+        borderRadius: 18,
+        backgroundColor: Red500,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginRight: 12,
+        borderWidth: 1.5,
+        borderColor: '#eee',
+    },
+    onbuttonText: {
+        fontWeight: 'bold',
+        color: '#fff',
     },
 });

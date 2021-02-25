@@ -23,11 +23,14 @@ const styles = StyleSheet.create({
     },
     button: {
         backgroundColor: '#f44336',
-        alignSelf: 'center',
         padding: 5,
-        borderRadius: 14,
-        height: 32,
-        width: 100,
+        borderRadius: 24,
+        height: 48,
+        width: 180,
+        marginBottom: 60,
+        alignSelf: 'center',
+        // alignContent: 'center',
+        justifyContent: 'center',
     },
     buttonText: {
         color: '#fff',
