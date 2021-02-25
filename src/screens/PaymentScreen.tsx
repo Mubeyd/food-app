@@ -1,12 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import BookingStages from '../components/BookingStages';
+import CreditDetails from '../components/CreditDetails';
+import PaymentButton from '../components/PaymentButton';
 
 const PaymentScreen = ({ navigation }) => {
+    const [state, setstate] = useState(false);
+    const [state2, setstate2] = useState(true);
     return (
         <View>
             <BookingStages orderState="delivery" />
-            <Text style={styles.headerText}>PaymentScreen</Text>
+            <View style={styles.headerVeiw}>
+                <Text style={styles.headerText}>
+                    Choose your payment method
+                </Text>
+                <Text style={styles.headerPrice}>$ 10</Text>
+            </View>
+            <View style={styles.buttonsView}>
+                <PaymentButton
+                    antIcon="idcard"
+                    payType="Touch ID"
+                    payDetails="Using Apple ID"
+                    onPress={() => {
+                        setstate(() => !state);
+                        setstate2(() => !state2);
+                    }}
+                    selected={state ?? state2}
+                />
+                <PaymentButton
+                    antIcon="creditcard"
+                    payType="Credit Card"
+                    payDetails="Master or Debit"
+                    onPress={() => {
+                        setstate(() => !state);
+                        setstate2(() => !state2);
+                    }}
+                    selected={state2 ?? state}
+                />
+            </View>
+            <View>
+                <CreditDetails />
+            </View>
             <TouchableOpacity
                 onPress={() => navigation.navigate('ConfirmDoneScreen')}
                 style={styles.button}>
@@ -19,9 +53,24 @@ const PaymentScreen = ({ navigation }) => {
 export default PaymentScreen;
 
 const styles = StyleSheet.create({
+    headerVeiw: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        margin: 12,
+    },
     headerText: {
-        fontSize: 44,
+        fontSize: 16,
         fontWeight: 'bold',
+    },
+    headerPrice: {
+        fontSize: 24,
+        fontWeight: 'bold',
+    },
+    buttonsView: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        alignItems: 'center',
     },
     button: {
         backgroundColor: '#f44336',
@@ -29,7 +78,7 @@ const styles = StyleSheet.create({
         borderRadius: 24,
         height: 48,
         width: 180,
-        marginBottom: 60,
+        marginVertical: 20,
         alignSelf: 'center',
         // alignContent: 'center',
         justifyContent: 'center',
