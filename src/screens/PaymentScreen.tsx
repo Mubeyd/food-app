@@ -7,6 +7,8 @@ import PaymentButton from '../components/PaymentButton';
 const PaymentScreen = ({ navigation }) => {
     const [state, setstate] = useState(false);
     const [state2, setstate2] = useState(true);
+    const [showDetails, setshowDetails] = useState(true);
+    const [showDetails2, setshowDetails2] = useState(true);
     return (
         <View>
             <BookingStages orderState="delivery" />
@@ -24,6 +26,7 @@ const PaymentScreen = ({ navigation }) => {
                     onPress={() => {
                         setstate(() => !state);
                         setstate2(() => !state2);
+                        setshowDetails(() => !showDetails);
                     }}
                     selected={state ?? state2}
                 />
@@ -34,12 +37,24 @@ const PaymentScreen = ({ navigation }) => {
                     onPress={() => {
                         setstate(() => !state);
                         setstate2(() => !state2);
+                        setshowDetails2(() => !showDetails2);
                     }}
                     selected={state2 ?? state}
                 />
             </View>
             <View>
-                <CreditDetails />
+                {showDetails ? (
+                    <CreditDetails
+                        onPress={() => setshowDetails(() => !showDetails)}
+                    />
+                ) : null}
+            </View>
+            <View>
+                {showDetails2 ? (
+                    <CreditDetails
+                        onPress={() => setshowDetails2(() => !showDetails2)}
+                    />
+                ) : null}
             </View>
             <TouchableOpacity
                 onPress={() => navigation.navigate('ConfirmDoneScreen')}

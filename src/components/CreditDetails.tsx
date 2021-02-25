@@ -6,6 +6,7 @@ import {
     View,
     TouchableOpacity,
 } from 'react-native';
+import * as Animatable from 'react-native-animatable';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import { windowWidth } from '../config/styleConstants';
@@ -13,13 +14,20 @@ import { windowWidth } from '../config/styleConstants';
 const CARD_HEIGHT = 120;
 const CARD_WIDTH = windowWidth * 0.9;
 
-const CreditDetails = () => {
+interface Props {
+    onPress: () => void;
+}
+
+const CreditDetails = (props: Props) => {
     const [creaditName, setcreaditName] = useState('Leoanrd Lowe');
     const [creaditNum, setcreaditNum] = useState('2345 3456 4567 6778');
     const [creaditDate, setcreaditDate] = useState('08 May 2018');
     const [creaditSecure, setcreaditSecure] = useState('092');
     return (
-        <View style={styles.mainContainer}>
+        <Animatable.View
+            animation="zoomInDown"
+            duraton={1500}
+            style={styles.mainContainer}>
             <View style={styles.container}>
                 <View style={styles.viewLeft}>
                     <TextInput
@@ -46,10 +54,10 @@ const CreditDetails = () => {
                     />
                 </View>
             </View>
-            <TouchableOpacity style={styles.buttton} onPress={() => { }}>
+            <TouchableOpacity style={styles.buttton} onPress={props.onPress}>
                 <AntDesign name="closecircle" size={24} color="#000" />
             </TouchableOpacity>
-        </View>
+        </Animatable.View>
     );
 };
 
