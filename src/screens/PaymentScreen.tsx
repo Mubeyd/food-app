@@ -10,9 +10,9 @@ import { windowHeight, windowWidth } from '../config/styleConstants';
 
 const PaymentScreen = ({ navigation }) => {
     const [state, setstate] = useState(false);
-    const [state2, setstate2] = useState(true);
-    const [showDetails, setshowDetails] = useState(false);
-    const [showDetails2, setshowDetails2] = useState(false);
+    const [state2, setstate2] = useState(false);
+    const [onCloseDetails, setOnCloseDetails] = useState(false);
+    const [onCloseDetails2, setOnCloseDetails2] = useState(false);
     const [modalVisible, setModalVisible] = useState(false);
     return (
         <View style={styles.mainContainer}>
@@ -30,11 +30,12 @@ const PaymentScreen = ({ navigation }) => {
                         payType="Touch ID"
                         payDetails="Using Apple ID"
                         onPress={() => {
-                            setstate(() => !state);
-                            setstate2(() => !state2);
-                            setshowDetails(() => !showDetails);
+                            setTimeout(() => {
+                                setstate(() => !state);
+                            }, 400);
+                            setOnCloseDetails(() => !onCloseDetails);
                         }}
-                        selected={state ?? state2}
+                        selected={!onCloseDetails}
                     />
                 </Animatable.View>
                 <Animatable.View animation="fadeInDown" duration={500}>
@@ -43,45 +44,66 @@ const PaymentScreen = ({ navigation }) => {
                         payType="Credit Card"
                         payDetails="Master or Debit"
                         onPress={() => {
-                            setstate(() => !state);
-                            setstate2(() => !state2);
-                            setshowDetails2(() => !showDetails2);
+                            setTimeout(() => {
+                                setstate2(() => !state2);
+                            }, 400);
+                            setOnCloseDetails2(() => !onCloseDetails2);
                         }}
-                        selected={state2 ?? state}
+                        selected={!onCloseDetails2}
                     />
                 </Animatable.View>
             </View>
             <View>
-                {showDetails ? (
+                {state ? (
                     <CreditDetails
-                        onPress={() => setshowDetails(() => !showDetails)}
+                        cardName="Leonard"
+                        cardNumber="2345 3456 4567 6778"
+                        cardDate="08 May 2018"
+                        cardSecure="092"
+                        onClose={!onCloseDetails}
+                        onPress={() => {
+                            setTimeout(() => {
+                                setstate(() => !state);
+                            }, 400);
+                            setOnCloseDetails(() => !onCloseDetails);
+                        }}
                     />
                 ) : null}
             </View>
             <View>
-                {showDetails2 ? (
+                {state2 ? (
                     <CreditDetails
-                        onPress={() => setshowDetails2(() => !showDetails2)}
+                        cardName="David"
+                        cardNumber="123 456 789 132"
+                        cardDate="25 May 2019"
+                        cardSecure="078"
+                        onClose={!onCloseDetails2}
+                        onPress={() => {
+                            setTimeout(() => {
+                                setstate2(() => !state2);
+                            }, 400);
+                            setOnCloseDetails2(() => !onCloseDetails2);
+                        }}
                     />
                 ) : null}
             </View>
             {modalVisible ? (
                 <AlertModal
                     onPress={() => {
-                        // setModalVisible(() => !modalVisible);
-                        {
-                        }
+                        setModalVisible(() => !modalVisible);
                     }}
                 />
             ) : null}
-            <RedButton
-                onPress={() => {
-                    showDetails || showDetails2
-                        ? navigation.navigate('ConfirmDoneScreen')
-                        : setModalVisible(() => !modalVisible);
-                }}
-                text="Select Payment"
-            />
+            <View style={styles.redButtonView}>
+                <RedButton
+                    onPress={() => {
+                        state || state2
+                            ? navigation.navigate('ConfirmDoneScreen')
+                            : setModalVisible(() => !modalVisible);
+                    }}
+                    text="Select Payment"
+                />
+            </View>
         </View>
     );
 };
@@ -92,6 +114,7 @@ const styles = StyleSheet.create({
     mainContainer: {
         backgroundColor: '#fff',
         height: windowHeight * 0.89,
+        flexDirection: 'column',
     },
     headerVeiw: {
         flexDirection: 'row',
@@ -115,5 +138,10 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         alignItems: 'center',
         zIndex: 1,
+    },
+    redButtonView: {
+        alignSelf: 'center',
+        position: 'absolute',
+        bottom: 0,
     },
 });

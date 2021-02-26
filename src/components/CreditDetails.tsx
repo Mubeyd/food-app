@@ -1,11 +1,5 @@
 import React, { useState } from 'react';
-import {
-    StyleSheet,
-    Text,
-    TextInput,
-    View,
-    TouchableOpacity,
-} from 'react-native';
+import { StyleSheet, TextInput, View, TouchableOpacity } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
@@ -16,17 +10,24 @@ const CARD_WIDTH = windowWidth * 0.9;
 
 interface Props {
     onPress: () => void;
+    onClose: Boolean;
+    cardName: string;
+    cardNumber: string;
+    cardDate: string;
+    cardSecure: string;
 }
 
 const CreditDetails = (props: Props) => {
-    const [creaditName, setcreaditName] = useState('Leoanrd Lowe');
-    const [creaditNum, setcreaditNum] = useState('2345 3456 4567 6778');
-    const [creaditDate, setcreaditDate] = useState('08 May 2018');
-    const [creaditSecure, setcreaditSecure] = useState('092');
+    const [creaditName, setcreaditName] = useState(props.cardName);
+    const [creaditNum, setcreaditNum] = useState(props.cardNumber);
+    const [creaditDate, setcreaditDate] = useState(props.cardDate);
+    const [creaditSecure, setcreaditSecure] = useState(props.cardSecure);
     return (
-        <Animatable.View animation="fadeInDown" duration={400}>
+        <Animatable.View
+            animation={props.onClose ? 'fadeOutUp' : 'fadeInDown'}
+            duration={400}>
             <Animatable.View
-                animation="zoomIn"
+                animation={props.onClose ? 'zoomOut' : 'zoomIn'}
                 duration={400}
                 style={styles.mainContainer}>
                 <View style={styles.container}>
@@ -58,7 +59,7 @@ const CreditDetails = (props: Props) => {
                 <TouchableOpacity
                     style={styles.buttton}
                     onPress={props.onPress}>
-                    <AntDesign name="closecircle" size={24} color="#000" />
+                    <AntDesign name="closecircle" size={30} color="#000" />
                 </TouchableOpacity>
             </Animatable.View>
         </Animatable.View>
@@ -106,21 +107,6 @@ const styles = StyleSheet.create({
         color: '#000',
         fontSize: 14,
         fontWeight: 'bold',
-    },
-    creaditNum: {
-        height: 40,
-        borderColor: 'gray',
-        borderWidth: 1,
-    },
-    creaditDate: {
-        height: 40,
-        borderColor: 'gray',
-        borderWidth: 1,
-    },
-    creaditSecure: {
-        height: 40,
-        borderColor: 'gray',
-        borderWidth: 1,
     },
     buttton: {
         marginVertical: 18,
