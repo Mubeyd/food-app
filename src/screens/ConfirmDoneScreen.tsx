@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     headerAnimation: {
-        height: 330,
+        height: 328,
         width: windowWidth,
         transform: [
             {
@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
     centerAnimation: {
         height: 300,
         width: windowWidth,
-        marginTop: -200,
+        marginTop: -140,
+        marginLeft: 24,
     },
 });

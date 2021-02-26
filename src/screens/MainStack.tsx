@@ -9,7 +9,6 @@ import CardListScreen from './CardListScreen';
 import CardItemDetails from './CardItemDetails';
 import HomeScreen from './HomeScreen';
 import MenuInfo from './MenuInfo';
-import BookingStack from './BookingStack';
 import SelectScreen from './SelectScreen';
 import AddressScreen from './AddressScreen';
 import PaymentScreen from './PaymentScreen';
@@ -22,7 +21,7 @@ const MainStack = (navigation: any) => {
   return (
     <NavigationContainer>
       <HomeStack.Navigator
-        initialRouteName="ConfirmDoneScreen"
+        initialRouteName="HomeScreen"
         screenOptions={{
           headerStyle: {
             backgroundColor: colors.background,
@@ -53,6 +52,11 @@ const MainStack = (navigation: any) => {
                 />
               </View>
             ),
+            headerTitleStyle: {
+              color: '#000',
+              alignSelf: 'center',
+              marginRight: '10%',
+            },
           }}
         />
         <HomeStack.Screen
@@ -87,16 +91,22 @@ const MainStack = (navigation: any) => {
           name="MenuInfo"
           component={MenuInfo}
           options={{
-            title: 'MenuInfo',
+            title: 'Menu Info',
             headerBackTitleVisible: false,
             headerTransparent: true,
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              color: '#fff',
+              alignSelf: 'center',
+              marginRight: '10%',
+            },
           }}
         />
         <HomeStack.Screen
           name="SelectScreen"
           component={SelectScreen}
           options={{
-            title: 'SelectScreen',
+            title: 'Booking',
             headerBackTitleVisible: false,
             // headerTransparent: true,
             headerTintColor: '#000',
@@ -107,6 +117,7 @@ const MainStack = (navigation: any) => {
             headerTitleStyle: {
               color: '#000',
               alignSelf: 'center',
+              marginRight: '10%',
             },
           }}
         />
@@ -114,7 +125,7 @@ const MainStack = (navigation: any) => {
           name="AddressScreen"
           component={AddressScreen}
           options={{
-            title: 'AddressScreen',
+            title: 'Confirmation',
             headerBackTitleVisible: false,
             // headerTransparent: true,
             headerTintColor: '#000',
@@ -125,6 +136,7 @@ const MainStack = (navigation: any) => {
             headerTitleStyle: {
               color: '#000',
               alignSelf: 'center',
+              marginRight: '10%',
             },
           }}
         />
@@ -132,7 +144,7 @@ const MainStack = (navigation: any) => {
           name="PaymentScreen"
           component={PaymentScreen}
           options={{
-            title: 'PaymentScreen',
+            title: 'Confirmation',
             headerBackTitleVisible: false,
             // headerTransparent: true,
             headerTintColor: '#000',
@@ -143,6 +155,7 @@ const MainStack = (navigation: any) => {
             headerTitleStyle: {
               color: '#000',
               alignSelf: 'center',
+              marginRight: '10%',
             },
           }}
         />
@@ -150,7 +163,7 @@ const MainStack = (navigation: any) => {
           name="ConfirmDoneScreen"
           component={ConfirmDoneScreen}
           options={{
-            title: 'ConfirmDoneScreen',
+            title: 'Confirm Done Screen',
             headerBackTitleVisible: false,
             headerTintColor: '#000',
             // headerTitle: false,
@@ -164,6 +177,7 @@ const MainStack = (navigation: any) => {
             },
             // headerTransparent: true,
             headerLeft: null,
+            headerShown: false,
           }}
         />
       </HomeStack.Navigator>
