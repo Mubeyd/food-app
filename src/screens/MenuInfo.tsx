@@ -1,33 +1,25 @@
 import {
     View,
     Text,
-    TouchableOpacity,
     Dimensions,
     StyleSheet,
     StatusBar,
     Animated,
-    Image,
     Platform,
     ImageBackground,
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { useTheme } from '@react-navigation/native';
 import React, { useState } from 'react';
 import MenuCard from '../components/MenuCard';
 import { cardData } from '../model/cardData';
 import BuyCard from '../components/BuyCard';
+import { windowWidth } from '../config/styleConstants';
 
-const { width, height1 } = Dimensions.get('window');
 const CARD_HEIGHT = 220;
-const CARD_WIDTH = width * 0.8;
-const SPACING_FOR_CARD_INSET = width * 0.1 - 10;
+const CARD_WIDTH = windowWidth * 0.8;
+const SPACING_FOR_CARD_INSET = windowWidth * 0.1 - 10;
 
 const MenuInfo = ({ navigation }) => {
-    const { colors } = useTheme();
-
-    const bs = React.useRef(null);
-
     const [state, setState] = useState(cardData);
     let mapAnimation = new Animated.Value(0);
 
@@ -40,8 +32,6 @@ const MenuInfo = ({ navigation }) => {
                     duration={1000}
                     style={styles.header}>
                     <ImageBackground
-                        // animation="fadeInDownBig"
-                        // duraton="1500"
                         source={require('../assets/logo.png')}
                         style={styles.logo}
                         resizeMode="stretch">
@@ -64,7 +54,6 @@ const MenuInfo = ({ navigation }) => {
                     </Text>
                 </View>
                 <Animated.ScrollView
-                    // ref={_scrollView}
                     horizontal
                     pagingEnabled
                     scrollEventThrottle={1}
@@ -72,18 +61,8 @@ const MenuInfo = ({ navigation }) => {
                     snapToInterval={CARD_WIDTH + 20}
                     snapToAlignment="center"
                     style={styles.scrollView}
-                    contentInset={{
-                        top: 0,
-                        left: SPACING_FOR_CARD_INSET,
-                        bottom: 0,
-                        right: SPACING_FOR_CARD_INSET,
-                    }}
-                    contentContainerStyle={{
-                        paddingHorizontal:
-                            Platform.OS === 'android'
-                                ? SPACING_FOR_CARD_INSET
-                                : 0,
-                    }}
+                    contentInset={styles.contentInset}
+                    contentContainerStyle={styles.contentContainerStyle}
                     onScroll={Animated.event(
                         [
                             {
@@ -96,21 +75,19 @@ const MenuInfo = ({ navigation }) => {
                         ],
                         { useNativeDriver: true },
                     )}>
-                    {state.map((marker, index) => (
+                    {state.map((item, index) => (
                         <View style={styles.menuCard} key={index}>
                             <MenuCard
-                                name={marker.title}
-                                logo={marker.logo}
-                                ratings={marker.rating}
-                                reviews={marker.reviews}
-                                price={marker.price}
-                                description1={marker.description1}
-                                description2={marker.description2}
-                                // orderState={marker.orderState}
-                                imageSource={marker.image}
+                                name={item.title}
+                                logo={item.logo}
+                                ratings={item.rating}
+                                reviews={item.reviews}
+                                price={item.price}
+                                description1={item.description1}
+                                description2={item.description2}
+                                imageSource={item.image}
                                 onPress={() => {
-                                    // bs.current.snapTo(0);
-                                    console.log('MapCard', index);
+                                    console.log('Card', index);
                                 }}
                             />
                         </View>
@@ -175,10 +152,8 @@ const styles = StyleSheet.create({
         bottom: 0,
         left: 0,
         right: 0,
-        // paddingVertical: 10,
     },
     buyCard: {
-        // padding: 10,
         elevation: 22,
         backgroundColor: '#FFF',
         borderRadius: 5,
@@ -193,7 +168,6 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
     },
     menuCard: {
-        // padding: 10,
         elevation: 12,
         backgroundColor: '#FFF',
         borderRadius: 5,
@@ -206,5 +180,15 @@ const styles = StyleSheet.create({
         height: CARD_HEIGHT - 20,
         width: CARD_WIDTH,
         overflow: 'hidden',
+    },
+    contentInset: {
+        top: 0,
+        left: SPACING_FOR_CARD_INSET,
+        bottom: 0,
+        right: SPACING_FOR_CARD_INSET,
+    },
+    contentContainerStyle: {
+        paddingHorizontal:
+            Platform.OS === 'android' ? SPACING_FOR_CARD_INSET : 0,
     },
 });

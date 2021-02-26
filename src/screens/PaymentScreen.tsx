@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import BookingStages from '../components/BookingStages';
 import CreditDetails from '../components/CreditDetails';
 import PaymentButton from '../components/PaymentButton';
+import RedButton from '../components/RedButton';
 
 const PaymentScreen = ({ navigation }) => {
     const [state, setstate] = useState(false);
@@ -61,11 +62,10 @@ const PaymentScreen = ({ navigation }) => {
                     />
                 ) : null}
             </View>
-            <TouchableOpacity
+            <RedButton
                 onPress={() => navigation.navigate('ConfirmDoneScreen')}
-                style={styles.button}>
-                <Text style={styles.buttonText}>Select Payment</Text>
-            </TouchableOpacity>
+                text="Select Payment"
+            />
         </View>
     );
 };
@@ -91,21 +91,5 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
-    },
-    button: {
-        backgroundColor: '#f44336',
-        padding: 5,
-        borderRadius: 24,
-        height: 48,
-        width: 180,
-        marginVertical: 20,
-        alignSelf: 'center',
-        // alignContent: 'center',
-        justifyContent: 'center',
-    },
-    buttonText: {
-        color: '#fff',
-        fontWeight: 'bold',
-        alignSelf: 'center',
     },
 });

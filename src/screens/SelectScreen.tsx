@@ -9,7 +9,7 @@ import {
 import * as Animatable from 'react-native-animatable';
 
 import BookingStages from '../components/BookingStages';
-import BuyCard from '../components/BuyCard';
+import RedButton from '../components/RedButton';
 import {
     Red500,
     Red700,
@@ -21,7 +21,6 @@ const SelectScreen = ({ navigation }) => {
     return (
         <View>
             <BookingStages orderState="select" />
-            {/* <Text style={styles.headerText}>SelectScreen</Text> */}
             <Animatable.View
                 animation="flipInX"
                 duration={1000}
@@ -56,11 +55,10 @@ const SelectScreen = ({ navigation }) => {
                     </View>
                 </ImageBackground>
             </Animatable.View>
-            <TouchableOpacity
+            <RedButton
                 onPress={() => navigation.navigate('AddressScreen')}
-                style={styles.button}>
-                <Text style={styles.buttonText}>Confirm Delivery</Text>
-            </TouchableOpacity>
+                text="Confirm Delivery"
+            />
         </View>
     );
 };
@@ -68,12 +66,7 @@ const SelectScreen = ({ navigation }) => {
 export default SelectScreen;
 
 const styles = StyleSheet.create({
-    headerText: {
-        fontSize: 44,
-        fontWeight: 'bold',
-    },
     mainView: {
-        // borderRadius: 24,
         borderBottomLeftRadius: 40,
         borderBottomRightRadius: 40,
     },
@@ -136,22 +129,5 @@ const styles = StyleSheet.create({
         color: '#fff',
         alignSelf: 'flex-start',
         fontSize: 14,
-        // marginLeft: 12,
-    },
-    button: {
-        backgroundColor: '#f44336',
-        padding: 5,
-        borderRadius: 24,
-        height: 48,
-        width: 180,
-        marginBottom: 60,
-        alignSelf: 'center',
-        // alignContent: 'center',
-        justifyContent: 'center',
-    },
-    buttonText: {
-        color: '#fff',
-        fontWeight: 'bold',
-        alignSelf: 'center',
     },
 });

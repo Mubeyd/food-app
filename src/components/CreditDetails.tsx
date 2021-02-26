@@ -26,7 +26,7 @@ const CreditDetails = (props: Props) => {
     return (
         <Animatable.View
             animation="zoomInDown"
-            duraton={1500}
+            duration={1500}
             style={styles.mainContainer}>
             <View style={styles.container}>
                 <View style={styles.viewLeft}>

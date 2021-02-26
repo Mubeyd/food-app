@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import LottieView from 'lottie-react-native';
 import * as Animatable from 'react-native-animatable';
 import { windowWidth } from '../config/styleConstants';
+import RedButton from '../components/RedButton';
 
 const ConfirmDoneScreen = ({ navigation }) => {
     return (
@@ -18,21 +19,19 @@ const ConfirmDoneScreen = ({ navigation }) => {
                 <Animatable.View
                     animation="flipInX"
                     duration={1400}
-                    // infinite
-                    // transition={(0, (1500)[([, duratio   n], ease - out)])}
+                    // infinite={0}
                     style={styles.centerAnimation}>
                     <LottieView
                         source={require('../assets/animations/676-done.json')}
                         autoPlay
-                        loop={false}
+                        loop={true}
                     />
                 </Animatable.View>
             </View>
-            <TouchableOpacity
+            <RedButton
                 onPress={() => navigation.navigate('HomeScreen')}
-                style={styles.button}>
-                <Text style={styles.buttonText}>Done</Text>
-            </TouchableOpacity>
+                text="Done"
+            />
         </View>
     );
 };
@@ -59,21 +58,5 @@ const styles = StyleSheet.create({
         height: 300,
         width: windowWidth,
         marginTop: -200,
-    },
-    button: {
-        backgroundColor: '#f44336',
-        padding: 5,
-        borderRadius: 24,
-        height: 48,
-        width: 180,
-        marginBottom: 60,
-        alignSelf: 'center',
-        // alignContent: 'center',
-        justifyContent: 'center',
-    },
-    buttonText: {
-        color: '#fff',
-        fontWeight: 'bold',
-        alignSelf: 'center',
     },
 });
