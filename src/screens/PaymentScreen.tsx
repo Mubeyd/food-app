@@ -1,24 +1,27 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import * as Animatable from 'react-native-animatable';
+import AlertModal from '../components/AlertModal';
 import BookingStages from '../components/BookingStages';
 import CreditDetails from '../components/CreditDetails';
 import PaymentButton from '../components/PaymentButton';
 import RedButton from '../components/RedButton';
+import { windowHeight, windowWidth } from '../config/styleConstants';
 
 const PaymentScreen = ({ navigation }) => {
     const [state, setstate] = useState(false);
     const [state2, setstate2] = useState(true);
     const [showDetails, setshowDetails] = useState(false);
     const [showDetails2, setshowDetails2] = useState(false);
+    const [modalVisible, setModalVisible] = useState(false);
     return (
-        <View>
+        <View style={styles.mainContainer}>
             <BookingStages orderState="delivery" />
             <View style={styles.headerVeiw}>
                 <Text style={styles.headerText}>
                     Choose your payment method
                 </Text>
-                <Text style={styles.headerPrice}>$ 10</Text>
+                <Text style={styles.headerPrice}>$ 10.00 </Text>
             </View>
             <View style={styles.buttonsView}>
                 <Animatable.View animation="slideInRight" duration={1200}>
@@ -62,8 +65,21 @@ const PaymentScreen = ({ navigation }) => {
                     />
                 ) : null}
             </View>
+            {modalVisible ? (
+                <AlertModal
+                    onPress={() => {
+                        // setModalVisible(() => !modalVisible);
+                        {
+                        }
+                    }}
+                />
+            ) : null}
             <RedButton
-                onPress={() => navigation.navigate('ConfirmDoneScreen')}
+                onPress={() => {
+                    showDetails || showDetails2
+                        ? navigation.navigate('ConfirmDoneScreen')
+                        : setModalVisible(() => !modalVisible);
+                }}
                 text="Select Payment"
             />
         </View>
@@ -73,11 +89,17 @@ const PaymentScreen = ({ navigation }) => {
 export default PaymentScreen;
 
 const styles = StyleSheet.create({
+    mainContainer: {
+        backgroundColor: '#fff',
+        height: windowHeight * 0.89,
+    },
     headerVeiw: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        margin: 12,
+        padding: 8,
+        backgroundColor: '#eee',
+        width: windowWidth,
     },
     headerText: {
         fontSize: 16,

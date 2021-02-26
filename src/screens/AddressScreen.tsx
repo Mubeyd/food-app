@@ -12,7 +12,7 @@ const AddressScreen = ({ navigation }) => {
         <View style={styles.container}>
             <BookingStages orderState="address" />
             <View style={styles.addresses}>
-                <Animatable.View animation="slideInRight" duration={1200}>
+                <Animatable.View animation="slideInRight" duration={1400}>
                     <AddressSelect
                         onPress={() => {
                             setstate(() => !state);

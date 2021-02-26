@@ -24,39 +24,43 @@ const CreditDetails = (props: Props) => {
     const [creaditDate, setcreaditDate] = useState('08 May 2018');
     const [creaditSecure, setcreaditSecure] = useState('092');
     return (
-        <Animatable.View
-            animation="zoomInDown"
-            duration={1500}
-            style={styles.mainContainer}>
-            <View style={styles.container}>
-                <View style={styles.viewLeft}>
-                    <TextInput
-                        style={styles.creaditName}
-                        onChangeText={(text) => setcreaditName(text)}
-                        value={creaditName}
-                    />
-                    <TextInput
-                        style={styles.creaditName}
-                        onChangeText={(text) => setcreaditNum(text)}
-                        value={creaditNum}
-                    />
+        <Animatable.View animation="fadeInDown" duration={1000}>
+            <Animatable.View
+                animation="zoomIn"
+                duration={1500}
+                style={styles.mainContainer}>
+                <View style={styles.container}>
+                    <View style={styles.viewLeft}>
+                        <TextInput
+                            style={styles.creaditName}
+                            onChangeText={(text) => setcreaditName(text)}
+                            value={creaditName}
+                        />
+                        <TextInput
+                            style={styles.creaditName}
+                            onChangeText={(text) => setcreaditNum(text)}
+                            value={creaditNum}
+                        />
+                    </View>
+                    <View style={styles.viewRight}>
+                        <TextInput
+                            style={styles.creaditName}
+                            onChangeText={(text) => setcreaditDate(text)}
+                            value={creaditDate}
+                        />
+                        <TextInput
+                            style={styles.creaditName}
+                            onChangeText={(text) => setcreaditSecure(text)}
+                            value={creaditSecure}
+                        />
+                    </View>
                 </View>
-                <View style={styles.viewRight}>
-                    <TextInput
-                        style={styles.creaditName}
-                        onChangeText={(text) => setcreaditDate(text)}
-                        value={creaditDate}
-                    />
-                    <TextInput
-                        style={styles.creaditName}
-                        onChangeText={(text) => setcreaditSecure(text)}
-                        value={creaditSecure}
-                    />
-                </View>
-            </View>
-            <TouchableOpacity style={styles.buttton} onPress={props.onPress}>
-                <AntDesign name="closecircle" size={24} color="#000" />
-            </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.buttton}
+                    onPress={props.onPress}>
+                    <AntDesign name="closecircle" size={24} color="#000" />
+                </TouchableOpacity>
+            </Animatable.View>
         </Animatable.View>
     );
 };
@@ -99,6 +103,9 @@ const styles = StyleSheet.create({
         borderRadius: 24,
         padding: 12,
         marginVertical: 12,
+        color: '#000',
+        fontSize: 14,
+        fontWeight: 'bold',
     },
     creaditNum: {
         height: 40,
