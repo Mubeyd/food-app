@@ -24,7 +24,7 @@ const PaymentScreen = ({ navigation }) => {
                 <Text style={styles.headerPrice}>$ 10.00 </Text>
             </View>
             <View style={styles.buttonsView}>
-                <Animatable.View animation="slideInRight" duration={1200}>
+                <Animatable.View animation="fadeInDown" duration={500}>
                     <PaymentButton
                         antIcon="idcard"
                         payType="Touch ID"
@@ -37,7 +37,7 @@ const PaymentScreen = ({ navigation }) => {
                         selected={state ?? state2}
                     />
                 </Animatable.View>
-                <Animatable.View animation="slideInRight" duration={1200}>
+                <Animatable.View animation="fadeInDown" duration={500}>
                     <PaymentButton
                         antIcon="creditcard"
                         payType="Credit Card"
@@ -100,6 +100,7 @@ const styles = StyleSheet.create({
         padding: 8,
         backgroundColor: '#eee',
         width: windowWidth,
+        zIndex: 2,
     },
     headerText: {
         fontSize: 16,
@@ -113,5 +114,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
+        zIndex: 1,
     },
 });

@@ -28,9 +28,9 @@ const MenuInfo = ({ navigation }) => {
             <StatusBar backgroundColor="#f44336" barStyle="light-content" />
             <View style={{ height: CARD_HEIGHT - 90 }}>
                 <Animatable.View
+                    style={styles.header}
                     animation="fadeInDownBig"
-                    duration={1000}
-                    style={styles.header}>
+                    duration={1000}>
                     <ImageBackground
                         source={require('../assets/logo.png')}
                         style={styles.logo}
@@ -42,7 +42,10 @@ const MenuInfo = ({ navigation }) => {
                     </ImageBackground>
                 </Animatable.View>
             </View>
-            <Animatable.View style={[styles.footer]} animation="fadeInUpBig">
+            <Animatable.View
+                style={[styles.footer]}
+                animation="fadeInUpBig"
+                duration={1000}>
                 <View>
                     <View style={styles.buyCard}>
                         <BuyCard

@@ -24,10 +24,10 @@ const CreditDetails = (props: Props) => {
     const [creaditDate, setcreaditDate] = useState('08 May 2018');
     const [creaditSecure, setcreaditSecure] = useState('092');
     return (
-        <Animatable.View animation="fadeInDown" duration={1000}>
+        <Animatable.View animation="fadeInDown" duration={400}>
             <Animatable.View
                 animation="zoomIn"
-                duration={1500}
+                duration={400}
                 style={styles.mainContainer}>
                 <View style={styles.container}>
                     <View style={styles.viewLeft}>
