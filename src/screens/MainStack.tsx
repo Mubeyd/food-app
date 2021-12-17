@@ -17,68 +17,68 @@ import ConfirmDoneScreen from './ConfirmDoneScreen';
 const HomeStack = createStackNavigator();
 
 const MainStack = (navigation: any) => {
-  const { colors } = useTheme();
-  return (
-    <NavigationContainer>
-      <HomeStack.Navigator
-        initialRouteName="HomeScreen"
-        screenOptions={{
-          headerStyle: {
-            backgroundColor: colors.background,
-            shadowColor: colors.background, // iOS
-            elevation: 0, // Android
-          },
-          headerTintColor: colors.text,
-          headerTitleStyle: {
-            fontWeight: 'bold',
-            marginRight: 30,
-            alignSelf: 'center',
-            color: '#fff',
-          },
-        }}>
-        <HomeStack.Screen
-          name="HomeScreen"
-          component={HomeScreen}
-          options={{
-            title: 'FoodFinder',
-            headerLeft: () => (
-              <View style={{ marginLeft: 10 }}>
-                <Icon.Button
-                  name="ios-menu"
-                  size={25}
-                  color={colors.text}
-                  backgroundColor={colors.background}
-                // onPress={() => navigation.openDrawer()}
+    const { colors } = useTheme();
+    return (
+        <NavigationContainer>
+            <HomeStack.Navigator
+                initialRouteName="HomeScreen"
+                screenOptions={{
+                    headerStyle: {
+                        backgroundColor: colors.background,
+                        shadowColor: colors.background, // iOS
+                        elevation: 0, // Android
+                    },
+                    headerTintColor: colors.text,
+                    headerTitleStyle: {
+                        fontWeight: 'bold',
+                        marginRight: 30,
+                        alignSelf: 'center',
+                        color: '#fff',
+                    },
+                }}>
+                <HomeStack.Screen
+                    name="HomeScreen"
+                    component={HomeScreen}
+                    options={{
+                        title: 'FoodFinder',
+                        headerLeft: () => (
+                            <View style={{ marginLeft: 10 }}>
+                                <Icon.Button
+                                    name="ios-menu"
+                                    size={25}
+                                    color={colors.text}
+                                    backgroundColor={colors.background}
+                                    // onPress={() => navigation.openDrawer()}
+                                />
+                            </View>
+                        ),
+                        headerTitleStyle: {
+                            color: '#000',
+                            alignSelf: 'center',
+                            marginRight: '10%',
+                        },
+                    }}
                 />
-              </View>
-            ),
-            headerTitleStyle: {
-              color: '#000',
-              alignSelf: 'center',
-              marginRight: '10%',
-            },
-          }}
-        />
-        <HomeStack.Screen
-          name="CardListScreen"
-          component={CardListScreen}
-          options={({ route }) => ({
-            title: route.params.title,
-            headerBackTitleVisible: false,
-          })}
-        />
-        <HomeStack.Screen
-          name="CardItemDetails"
-          component={CardItemDetails}
-          options={({ route }) => ({
-            title: route.params.title,
-            headerBackTitleVisible: false,
-            headerTitle: false,
-            headerTransparent: true,
-            headerTintColor: '#fff',
-          })}
-        />
-        {/* <HomeStack.Screen
+                <HomeStack.Screen
+                    name="CardListScreen"
+                    component={CardListScreen}
+                    options={({ route }) => ({
+                        title: route.params.title,
+                        headerBackTitleVisible: false,
+                    })}
+                />
+                <HomeStack.Screen
+                    name="CardItemDetails"
+                    component={CardItemDetails}
+                    options={({ route }) => ({
+                        title: route.params.title,
+                        headerBackTitleVisible: false,
+                        headerTitle: false,
+                        headerTransparent: true,
+                        headerTintColor: '#fff',
+                    })}
+                />
+                {/* <HomeStack.Screen
           name="BookingStack"
           component={BookingStack}
           options={({ route }) => ({
@@ -87,108 +87,108 @@ const MainStack = (navigation: any) => {
             // headerTransparent: true,
           })}
         /> */}
-        <HomeStack.Screen
-          name="MenuInfo"
-          component={MenuInfo}
-          options={{
-            title: 'Menu Info',
-            headerBackTitleVisible: false,
-            headerTransparent: true,
-            headerTintColor: '#fff',
-            headerTitleStyle: {
-              color: '#fff',
-              alignSelf: 'center',
-              marginRight: '10%',
-            },
-          }}
-        />
-        <HomeStack.Screen
-          name="SelectScreen"
-          component={SelectScreen}
-          options={{
-            title: 'Booking',
-            headerBackTitleVisible: false,
-            // headerTransparent: true,
-            headerTintColor: '#000',
-            headerStyle: {
-              backgroundColor: '#fff',
-              elevation: 0,
-            },
-            headerTitleStyle: {
-              color: '#000',
-              alignSelf: 'center',
-              marginRight: '10%',
-            },
-          }}
-        />
-        <HomeStack.Screen
-          name="AddressScreen"
-          component={AddressScreen}
-          options={{
-            title: 'Confirmation',
-            headerBackTitleVisible: false,
-            // headerTransparent: true,
-            headerTintColor: '#000',
-            headerStyle: {
-              backgroundColor: '#fff',
-              elevation: 0,
-            },
-            headerTitleStyle: {
-              color: '#000',
-              alignSelf: 'center',
-              marginRight: '10%',
-            },
-          }}
-        />
-        <HomeStack.Screen
-          name="PaymentScreen"
-          component={PaymentScreen}
-          options={{
-            title: 'Confirmation',
-            headerBackTitleVisible: false,
-            // headerTransparent: true,
-            headerTintColor: '#000',
-            headerStyle: {
-              backgroundColor: '#fff',
-              elevation: 0,
-            },
-            headerTitleStyle: {
-              color: '#000',
-              alignSelf: 'center',
-              marginRight: '10%',
-            },
-          }}
-        />
-        <HomeStack.Screen
-          name="ConfirmDoneScreen"
-          component={ConfirmDoneScreen}
-          options={{
-            title: 'Confirm Done Screen',
-            headerBackTitleVisible: false,
-            headerTintColor: '#000',
-            // headerTitle: false,
-            headerStyle: {
-              backgroundColor: '#fff',
-              elevation: 0,
-            },
-            headerTitleStyle: {
-              color: '#000',
-              alignSelf: 'center',
-            },
-            // headerTransparent: true,
-            headerLeft: null,
-            headerShown: false,
-          }}
-        />
-      </HomeStack.Navigator>
-    </NavigationContainer>
-  );
+                <HomeStack.Screen
+                    name="MenuInfo"
+                    component={MenuInfo}
+                    options={{
+                        title: 'Menu Info',
+                        headerBackTitleVisible: false,
+                        headerTransparent: true,
+                        headerTintColor: '#fff',
+                        headerTitleStyle: {
+                            color: '#fff',
+                            alignSelf: 'center',
+                            marginRight: '10%',
+                        },
+                    }}
+                />
+                <HomeStack.Screen
+                    name="SelectScreen"
+                    component={SelectScreen}
+                    options={{
+                        title: 'Booking',
+                        headerBackTitleVisible: false,
+                        // headerTransparent: true,
+                        headerTintColor: '#000',
+                        headerStyle: {
+                            backgroundColor: '#fff',
+                            elevation: 0,
+                        },
+                        headerTitleStyle: {
+                            color: '#000',
+                            alignSelf: 'center',
+                            marginRight: '10%',
+                        },
+                    }}
+                />
+                <HomeStack.Screen
+                    name="AddressScreen"
+                    component={AddressScreen}
+                    options={{
+                        title: 'Confirmation',
+                        headerBackTitleVisible: false,
+                        // headerTransparent: true,
+                        headerTintColor: '#000',
+                        headerStyle: {
+                            backgroundColor: '#fff',
+                            elevation: 0,
+                        },
+                        headerTitleStyle: {
+                            color: '#000',
+                            alignSelf: 'center',
+                            marginRight: '10%',
+                        },
+                    }}
+                />
+                <HomeStack.Screen
+                    name="PaymentScreen"
+                    component={PaymentScreen}
+                    options={{
+                        title: 'Confirmation',
+                        headerBackTitleVisible: false,
+                        // headerTransparent: true,
+                        headerTintColor: '#000',
+                        headerStyle: {
+                            backgroundColor: '#fff',
+                            elevation: 0,
+                        },
+                        headerTitleStyle: {
+                            color: '#000',
+                            alignSelf: 'center',
+                            marginRight: '10%',
+                        },
+                    }}
+                />
+                <HomeStack.Screen
+                    name="ConfirmDoneScreen"
+                    component={ConfirmDoneScreen}
+                    options={{
+                        title: 'Confirm Done Screen',
+                        headerBackTitleVisible: false,
+                        headerTintColor: '#000',
+                        // headerTitle: false,
+                        headerStyle: {
+                            backgroundColor: '#fff',
+                            elevation: 0,
+                        },
+                        headerTitleStyle: {
+                            color: '#000',
+                            alignSelf: 'center',
+                        },
+                        // headerTransparent: true,
+                        headerLeft: null,
+                        headerShown: false,
+                    }}
+                />
+            </HomeStack.Navigator>
+        </NavigationContainer>
+    );
 };
 const styles = StyleSheet.create({
-  view: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    view: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
 });
 export default MainStack;
